@@ -1,20 +1,11 @@
-#ifdef _DEBUG
-#pragma comment ( lib , "sfml-main-d.lib" )
-#elif defined (NDEBUG)
-#pragma comment ( lib , "sfml-main.lib" )
-#else
-#error "Unrecognized configuration!"
-#endif
-
-#include <cstdlib>
-#include <SFML/Graphics.hpp>
-#include "GameWindow.h"
-#include "GameObjectFactory.h"
-
-
-int main() {
-	GameWindow game;
-	game.start();
-
-	return EXIT_SUCCESS;
+#include "StateManager.h"
+#include "MenuState.h"
+#include <time.h>
+#include "ConstantsGame.h"
+int main()
+{
+	srand(NULL); // random 
+	StateManager app;
+	app.pushTop(new MenuState((float)board, (float)board)); //push all the constructor in the stack
+	app.gameRun(); // start the program
 }
